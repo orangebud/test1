@@ -139,6 +139,7 @@ public class StepDefinitions {
         if (shouldNot.equals("not be")) {
             assertThat(actualTitle, is(expectedTitle));
         } else {
+            logger.info("Expected title: {}.", expectedTitle);
             assertFalse(!actualTitle.equals(expectedTitle));
         }
     }
