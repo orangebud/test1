@@ -10,9 +10,15 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ItCafePageObject {
 
+    /**
+     * The IT café article's title.
+     */
     @FindBy(css = ".anyag.hir>h1")
     private WebElement articleTitle;
 
+    /**
+     * The last sentence of the IT café article.
+     */
     @FindBy(css = "p:nth-child(4)")
     private WebElement lastSentence;
 

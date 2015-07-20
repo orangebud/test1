@@ -12,9 +12,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = {"pretty",
-                "html:src/test/java/resources/testReport"},
+                "html:target/testReport"},
         features = "src/test/java/resources/"
 )
+
 public class RunGoogleTest {
 
 }

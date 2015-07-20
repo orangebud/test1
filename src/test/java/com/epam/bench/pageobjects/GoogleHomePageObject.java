@@ -10,16 +10,15 @@ import org.openqa.selenium.support.FindBy;
  */
 public class GoogleHomePageObject {
 
+    /**
+     * The search field on the google homepage.
+     */
     @FindBy(css = "#gs_htif0")
     private WebElement searchField;
-
 
     public WebElement getSearchField() {
         return searchField;
     }
 
-    public void setSearchField(WebElement searchField) {
-        this.searchField = searchField;
-    }
 
 }
