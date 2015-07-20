@@ -75,7 +75,7 @@ public class StepDefinitions {
         String actualTitle = itCafePage.getArticleTitle().getText();
         String actualLastSentence = itCafePage.getLastSentence().getText();
         assertThat(actualTitle, containsString(expectedTitle));
-        FileWriter fW = new FileWriter("src/test/java/resources/saveSentencesFromPage.txt", actualTitle, actualLastSentence);
+        FileWriter fW = new FileWriter("target/saveSentencesFromPage.txt", actualTitle, actualLastSentence);
 
     }
 
@@ -88,54 +88,21 @@ public class StepDefinitions {
     }
 
 
-    @And("A screenshot must be taken")
-    public void a_screenshot_must_be_taken(WebDriver driver) {
-    }
-
-
-    @Given("^I navigate to google \"([^\"]*)\"$")
-    public void I_navigate_to_google(String homePage) {
-        driver.get(homePage);
-    }
-
-
-    @When("^I search for string \"([^\"]*)\"$")
-    public void i_search_for_string_epam(String searchCondition) {
-        ResultsPageObject resultsPage = PageFactory.initElements(driver, ResultsPageObject.class);
-        resultsPage.getSearchField().sendKeys(searchCondition);
-        resultsPage.getSearchButton().click();
-    }
-
-
-    @Then("The first result must be equal to \"([^\"]*)\"$")
-    public void the_first_result_must_be_equal_to(String expectedTitle) {
-        ResultsPageObject resultsPage = PageFactory.initElements(driver, ResultsPageObject.class);
-        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#resultStats")));
-        String actualTitle = resultsPage.getEpamComTitle().getText();
-        assertThat(actualTitle, is(expectedTitle));
-    }
-
-
     @Given("^I navigate to \"([^\"]*)\"$")
     public void i_navigate_to(String homePage) {
         driver.get(homePage);
     }
 
 
-    @When("^I search for wrong condition \"([^\"]*)\"$")
-    public void I_search_for_wrong_condition(String searchWrongCondition) {
-        ResultsPageObject resultsPage = PageFactory.initElements(driver, ResultsPageObject.class);
-        resultsPage.getSearchField().sendKeys(searchWrongCondition);
-        resultsPage.getSearchButton().click();
-    }
-
-
-    @Then("The first result shouldnt be equal to \"([^\"]*)\"$")
-    public void the_first_result_shouldnt_be_equal_to(String expectedTitle) {
+    @Then("The first result should (be|not be) equal to \"([^\"]*)\"$")
+    public void the_first_result_shouldnt_be_equal_to(String shouldNot, String expectedTitle) {
         ResultsPageObject resultsPage = PageFactory.initElements(driver, ResultsPageObject.class);
         String actualTitle = resultsPage.getItCafeLink().getText();
-        assertThat(actualTitle, is(expectedTitle));
+        if (shouldNot.equals("not be")) {
+            assertThat(actualTitle, is(expectedTitle));
+        } else {
+            assertThat(actualTitle, is(expectedTitle));
+        }
     }
 
     @After
