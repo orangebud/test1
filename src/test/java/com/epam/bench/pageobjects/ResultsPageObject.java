@@ -10,19 +10,33 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ResultsPageObject {
 
-
+    /**
+     * The search field on the results page.
+     */
     @FindBy(css = "#lst-ib")
     private WebElement searchField;
 
+    /**
+     * The results page's search button.
+     */
     @FindBy(css = "#sblsbb")
     private WebElement searchButton;
 
+    /**
+     * The direct link to the IT café article.
+     */
     @FindBy(css = "#rso>div.srg>li:nth-child(1)>div>h3>a")
     private WebElement itCafeLink;
 
+    /**
+     * The epam's homepage among search results.
+     */
     @FindBy(css = "#rso>li>div>div>h3>a")
     private WebElement epamComTitle;
 
+    /**
+     * A page element what is given to the webdriver to wait for. Helps to make sure that the page is fully loaded.
+     */
     @FindBy(css = "#resultStats")
     private WebElement resultStats;
 
@@ -36,10 +50,6 @@ public class ResultsPageObject {
 
     public WebElement getSearchField() {
         return searchField;
-    }
-
-    public void getResultStats(WebElement resultStats) {
-        this.resultStats = resultStats;
     }
 
     public WebElement getItCafeLink() {

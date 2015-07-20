@@ -18,10 +18,10 @@ Feature: google search to exercise cucumber
 
   Scenario Outline: Search for epam on google, and make sure the first result is that is the user searched for
     Given I navigate to "http://www.google.com"
-    When I search for "<condition>"
+    When I search for the "<condition>"
     Then The first result should <not> equal to "<title>"
 
   Examples: Searching
     | condition | title                                         | not    |
-    | epam 350  | EPAM \| Software Product Development Services | be     |
+    | epam      | EPAM \| Software Product Development Services | be     |
     | ewame     | EPAM \| Software Product Development Services | not be |

@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
                 "html:target/testReport"},
         features = "src/test/java/resources/"
 )
+
 public class RunGoogleTest {
 
 }
