@@ -31,8 +31,8 @@ import static org.junit.Assert.assertThat;
  * Contains the step definition methods
  */
 public class StepDefinitions {
-    protected WebDriver driver;
-    Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
+    private WebDriver driver;
+    private static final Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
 
 
     @Before
@@ -96,7 +96,6 @@ public class StepDefinitions {
 
         logger.info("Writes required stings to a text file");
         FileWriter fW = new FileWriter("target/saveSentencesFromPage.txt", actualTitle, actualLastSentence);
-
     }
 
 
@@ -151,8 +150,13 @@ public class StepDefinitions {
             final byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenShot, "image/png");
         }
-        logger.info("Closes the Firefox driver");
-        driver.close();
-    }
+        try {
+            if (driver != null)
+                logger.info("Closes the Firefox driver");
+            driver.close();
+        } catch (NullPointerException e) {
+            logger.info("Caught NullPointerException:" + e.getMessage());
+        }
 
+    }
 }
