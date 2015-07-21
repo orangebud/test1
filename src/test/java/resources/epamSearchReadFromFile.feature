@@ -16,6 +16,7 @@ Feature: google search to exercise cucumber
     Then The header should contain "EPAM Systems"
     And The last sentence should be "Az EPAM Systems a világon összesen 9 300 fejlesztőt foglalkoztat, tavalyi árbevétele 555 millió dollár volt, 2014-re 22 százalékos növekedést várnak."
 
+  @Peti
   Scenario Outline: Search for epam on google, and make sure the first result is that is the user searched for
     Given I navigate to "http://www.google.com"
     When I search for the "<condition>"
@@ -24,4 +25,4 @@ Feature: google search to exercise cucumber
   Examples: Searching
     | condition | title                                         | not    |
     | epam      | EPAM \| Software Product Development Services | be     |
-    | ewame     | EPAM \| Software Product Development Services | not be |
+    | epam      | EPAM \| Software Product Development Services | not be |
