@@ -31,7 +31,7 @@ import static org.junit.Assert.assertThat;
  * Contains the step definition methods
  */
 public class StepDefinitions {
-    static WebDriver driver;
+    private WebDriver driver;
     Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
 
 
