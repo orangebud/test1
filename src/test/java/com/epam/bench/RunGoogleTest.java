@@ -15,7 +15,6 @@ import org.junit.runner.RunWith;
                 "html:target/testReport",
                 "json:target/report.json"
         },
-
         features = "src/test/java/resources/"
 )
 
