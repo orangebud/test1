@@ -32,7 +32,7 @@ import static org.junit.Assert.assertThat;
  */
 public class StepDefinitions {
     private WebDriver driver;
-    Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
+    private static final Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
 
 
     @Before
